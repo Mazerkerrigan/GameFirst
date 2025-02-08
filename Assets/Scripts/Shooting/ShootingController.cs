@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 namespace game_one.Shooting
 {
@@ -29,6 +30,9 @@ namespace game_one.Shooting
         }
         public void SetWeapon(Weapon weaponPrefab, Transform hand)
         {
+            if (_weapon != null)
+                Destroy(_weapon.gameObject);
+            
             _weapon = Instantiate(weaponPrefab, hand); // создаем оружие в руке 
             _weapon.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
         }

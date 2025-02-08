@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace game_one.Movement
 {
@@ -9,22 +8,20 @@ namespace game_one.Movement
         private static readonly float SqrEpsilon = Mathf.Epsilon * Mathf.Epsilon;
 
         [SerializeField]
-        private float _speed = 1f;
+        public float Speed = 1f;
+
         [SerializeField]
         private float _maxRadiansDelta = 10f;
-        [SerializeField]
-        private float _Nacceleration = 2f;
-
         public Vector3 MovementDirection {  get; set; }
-        public Vector3 LookDirection { get; set; }
+        public Vector3 LookDirection { get; set; }      
 
         private CharacterController _characterController;
-        
+        public Vector3 Delta { get; private set; }
         protected void Awake()
         {
             _characterController = GetComponent<CharacterController>();            
         }
-              
+            
         protected void Update()
         {
             Translate();
@@ -35,18 +32,8 @@ namespace game_one.Movement
             }
         }
         protected void Translate()
-        {
-            Vector3 delta;
-            if (Input.GetKey(KeyCode.Space))
-            {
-                delta = MovementDirection * _speed * _Nacceleration * Time.deltaTime;
-            }
-            else
-            { 
-                delta = MovementDirection * _speed * Time.deltaTime;
-
-            }
-            _characterController.Move(delta);
+        {           
+            _characterController.Move(Delta);
         }
         protected void Rotate()
         {
@@ -62,6 +49,16 @@ namespace game_one.Movement
 
                 transform.rotation = newRotation;
             }
+        }
+        public void UpdateMovement(Vector3 movementDirection, bool isSprinting, float accelerationMultiplier)
+        {
+            float speedMultiplier;
+            if (isSprinting == true)
+                speedMultiplier = accelerationMultiplier;
+            else
+                speedMultiplier = 1f;
+
+            Delta = Speed * speedMultiplier * Time.deltaTime * movementDirection;
         }
     }
 }
