@@ -49,6 +49,7 @@ MonoBehaviour:
   <BulletPrefab>k__BackingField: {fileID: 7452605046787345624, guid: ea7158c324a4e1442be6b86cc2e057eb, type: 3}
   <ShootRadius>k__BackingField: 5
   <ShootFrequencySec>k__BackingField: 1
+  _damage: 1
   _bulletMaxFlyDistance: 50
   _bulletFlySpeed: 10
   _bulletSpawnPosition: {fileID: 8172431686138016287}
@@ -94,7 +95,6 @@ GameObject:
   - component: {fileID: 5159113117728625835}
   - component: {fileID: 4691231827583717600}
   - component: {fileID: 8316886466739828327}
-  - component: {fileID: 3070129488002988643}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -167,26 +167,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3070129488002988643
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7929060690772418919}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
